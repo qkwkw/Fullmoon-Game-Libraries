@@ -6,8 +6,11 @@
 
 #include "MemoryPool.h"
 
+// Max chunk count.
 #define POOL_CHUNK_COUNT    98304
+// Memory size for each chunks. (Byte)
 #define	ALLOCATE_CHUNK_SIZE   256
+
 
 static void*         beginPoolAddress;
 static unsigned int  pool[POOL_CHUNK_COUNT][ALLOCATE_CHUNK_SIZE/8];
@@ -53,8 +56,6 @@ void* MemoryPool::allocate( int size ) {
 			return pool[currentAllocateCount];
 		}
 	}
-
-	// Never come here.
 	return NULL;
 };
 

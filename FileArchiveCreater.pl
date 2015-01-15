@@ -10,32 +10,14 @@ use Time::HiRes;
 
 my $archiveName = "./archive.dat";
 
-sub getTime {
-    my ( $sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst ) = localtime;
-    $year += 1900;
-    $mon  += 1;
-    my $now = Time::HiRes::time;
-    my ($seconds, $microseconds) = Time::HiRes::gettimeofday;
-    return sprintf "%04d/%02d/%02d %02d:%02d:%02d,%06d", $year, $mon, $mday, $hour, $min, $sec,$microseconds;
-}
-
-sub info {
-    print "[INFO ] ".getTime()." : ".$_[0]."\n";
-}
-
-sub error {
-    print "[ERROR] ".getTime()." : ".$_[0]."\n";
-}
-
 my @dir_list = @ARGV;
 my @file_list;
 my %file_hash;
 my %file_size_by_hash;
 
-
 sub readFiles {
 	my $dirName = $_[0];
-	opendir DH, $dirName or error ($!) and die;
+	opendir DH, $dirName or (print STDERR "ERR01 - Directory Not Found. -> "+$dirName) and die;
 	foreach ( readdir DH ) {
 		next if /^\.{1,2}$/;
 		my $filePath = $dirName."/".$_;
@@ -49,7 +31,7 @@ sub readFiles {
 				if ( $shiftCount == 4 ) { $shiftCount=0; }
 			}
 			if(defined $file_hash{$hash}) {
-				print STDERR "err";
+				print STDERR "ERR02 - File Name Hash is duplicate. Change file name -> "+$filePath;
 				exit;
 			} else {
 				$file_hash{$hash} = $filePath;

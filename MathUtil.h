@@ -16,8 +16,6 @@ public:
 	static double cosUp( double percent );
 	static double cosDown( double percent );
 
-	static int upDown( int length, int value, int range );
-
 	static void MathUtil::atan ( double *resultX, double *resultY, double sourceX, double targetX, double sourceY, double targetY );
 	static int MathUtil::atanAngle ( double sourceX, double targetX, double sourceY, double targetY );
 private:

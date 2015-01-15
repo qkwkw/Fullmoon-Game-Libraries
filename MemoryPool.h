@@ -4,15 +4,6 @@
  * Released under the MIT license
  */
 
-// Allocate memory from memory pool.
-template <class V > V* MALLOC() {
-	V* v = (V*)MemoryPool::allocate(sizeof(V));
-	V impl;
-	CopyMemory( v, &impl, sizeof(unsigned int) ); 
-	return v;
-}
-#define FREE(v)   (MemoryPool::free(v))
-
 // Constructor using memory pool.
 class ManagedObject {
 public:
@@ -23,6 +14,15 @@ public:
 	    MemoryPool::free(pv);
 	}
 };
+
+// Allocate memory from memory pool.
+template <class V > V* MALLOC() {
+	V* v = (V*)MemoryPool::allocate(sizeof(V));
+	V impl;
+	CopyMemory( v, &impl, sizeof(unsigned int) ); 
+	return v;
+}
+#define FREE(v)   (MemoryPool::free(v))
 
 // interface to implements.
 class MemoryPool

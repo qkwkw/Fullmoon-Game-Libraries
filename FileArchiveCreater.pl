@@ -31,7 +31,7 @@ sub readFiles {
 				if ( $shiftCount == 4 ) { $shiftCount=0; }
 			}
 			if(defined $file_hash{$hash}) {
-				print STDERR "ERR02 - File Name Hash is duplicate. Change file name -> "+$filePath;
+				print STDERR "ERR02 - File name hash is duplicated. Change file name -> "+$filePath;
 				exit;
 			} else {
 				$file_hash{$hash} = $filePath;

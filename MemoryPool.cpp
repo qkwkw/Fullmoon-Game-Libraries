@@ -10,7 +10,7 @@
 #define	ALLOCATE_CHUNK_SIZE   256
 
 static void*         beginPoolAddress;
-static unsigned int  pool[POOL_CHUNK_COUNT][ALLOCATE_CHUNK_SIZE/4];
+static unsigned int  pool[POOL_CHUNK_COUNT][ALLOCATE_CHUNK_SIZE/8];
 static char          isUsed[POOL_CHUNK_COUNT];
 
 static int  currentAllocateCount;

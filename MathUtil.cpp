@@ -19,7 +19,7 @@ void MathUtil::initialize() {
 	}
 }
 
-double  MathUtil::sin ( INT32 angle ) {
+double  MathUtil::sin ( int angle ) {
 	while ( angle < 0 ) { angle += 3600; }
 	return sinTmp[angle%3600];
 }
@@ -27,15 +27,15 @@ double  MathUtil::sin ( INT32 angle ) {
 double MathUtil::sinUp( double percent ) {
 	if ( percent < 0 ) { percent=0; }
 	if ( percent > 100 ) { percent=100; }
-	return sinTmp[(INT32)percent*9];
+	return sinTmp[(int)percent*9];
 }
 double MathUtil::sinDown( double percent ) {
 	if ( percent < 0 ) { percent=0; }
 	if ( percent > 100 ) { percent=100; }
-	return 1.0-sinTmp[(INT32)percent*9];
+	return 1.0-sinTmp[(int)percent*9];
 }
 
-double  MathUtil::cos ( INT32 angle ) {
+double  MathUtil::cos ( int angle ) {
 	while ( angle < 0 ) { angle += 3600; }
 	return cosTmp[angle%3600];
 }
@@ -58,12 +58,12 @@ void MathUtil::atan ( double *resultX, double *resultY, double sourceX, double t
 	*resultX = (diffX/l);
 	*resultY = (diffY/l);
 }
-INT32 MathUtil::atanAngle ( double sourceX, double targetX, double sourceY, double targetY ) {
+int MathUtil::atanAngle ( double sourceX, double targetX, double sourceY, double targetY ) {
 	return (3600-10*(180* atan2(targetY-sourceY,targetX-sourceX)/PI))+900;
 }
 
-INT32 MathUtil::upDown( INT32 length, INT32 value, INT32 range ) {
-	INT32 v = value%length;
+int MathUtil::upDown( int length, int value, int range ) {
+	int v = value%length;
 	if ( v < length/2 ) {
 		return range*v/(length/2);
 	} else {

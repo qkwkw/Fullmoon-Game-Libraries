@@ -61,12 +61,3 @@ void MathUtil::atan ( double *resultX, double *resultY, double sourceX, double t
 int MathUtil::atanAngle ( double sourceX, double targetX, double sourceY, double targetY ) {
 	return (3600-10*(180* atan2(targetY-sourceY,targetX-sourceX)/PI))+900;
 }
-
-int MathUtil::upDown( int length, int value, int range ) {
-	int v = value%length;
-	if ( v < length/2 ) {
-		return range*v/(length/2);
-	} else {
-		return range*(length-v)/(length/2);
-	}
-}

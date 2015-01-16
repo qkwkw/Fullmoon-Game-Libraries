@@ -13,7 +13,7 @@
 
 
 static void*         beginPoolAddress;
-static unsigned int  pool[POOL_CHUNK_COUNT][ALLOCATE_CHUNK_SIZE/8];
+static unsigned int  pool[POOL_CHUNK_COUNT][ALLOCATE_CHUNK_SIZE/sizeof(unsigned int)];
 static char          isUsed[POOL_CHUNK_COUNT];
 
 static int  currentAllocateCount;

@@ -29,8 +29,7 @@ void MemoryPool::initialize() {
 
 void MemoryPool::reset() {	
 	currentAllocateCount = 0;
-	ZeroMemory(&isUsed, sizeof(char)*POOL_CHUNK_COUNT);
-	ZeroMemory(&pool  , sizeof(unsigned char)*POOL_CHUNK_COUNT*ALLOCATE_CHUNK_SIZE);
+	ZeroMemory(&isUsed, sizeof(isUsed));
 	count = 0;
 };
 
